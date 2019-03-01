@@ -51,7 +51,19 @@ $(document).ready(function() {
   // ========================================================================= //
 
 
+  var sPath = window.location.pathname;
+  //var sPage = sPath.substring(sPath.lastIndexOf('\\') + 1);
+  var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
+  var popup=false;
+  if(sPage==="index.html"){
+    popup=true;
+  }
+
   $(window).scroll(function() {
+    if(!popup){
+      return;
+    }
+
     var scroll = $(window).scrollTop();
     if (scroll > 200 ) {
       $("#main-nav, #main-nav-subpage").slideDown(700);
